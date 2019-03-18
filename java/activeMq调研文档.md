@@ -1,7 +1,8 @@
 ## [activemq 实时监控调研文档]
 ### 一、背景
 ​        最近在工作中处理问题时，经常出现mq因为积压消息过多，导致mq不能正常工作，基本处于不可用状态。区校数据同步也因此不能正常工作。鉴于此根据activemq官方文档提供的监控方案，主要有以下几种：jmx/jconsole(java扩展管理工具),webconsole(访问8161对应的那个界面),Advisory Message(消息公告),ActiveMQ.Agent(命令行),Visualisation plug-in(可视化插件),Statistics plug-in(统计插件),使用第三方工具如:AMon, HermesJMS等等,因为目前仅仅需要对消费者数量、队列中剩余消息数等做监控，再一个为了不引入第三方的项目，先对activemq官方提供的这几种方式做调研。下面对这几种方式实现方式的说明，优缺点对比。
-###二、方式对比
+
+### 二、方式对比
 
 #### 1.jmx监控
     因为activemq是Java开发的程序，activemq原生就是支持JMX监控的。JMX监控是最全的，任何细节都可以通过JMX获取。如果远程连接JMX监控需要一些额外的配置。本机直接连接不需要，但是由于ActiveMQ是部署在linux上，所以应该很少有人会直接连接本地的JMX，除非是本地开发调试阶段。
